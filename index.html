@@ -2,456 +2,1004 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merlita Afinna Fisarra - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Merlita Afinna Fisarra | Portofolio Teknik Sipil</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink-blush: #f9e8f5;
+            --beige-soft: #fef7e8;
+            --primary-coral: #e26d6d;
+            --primary-dark: #c35a5a;
+            --secondary-blush: #f3a683;
+            --text-dark: #2d2e32;
+            --text-muted: #5b5e6b;
+            --bg-white: #ffffff;
+            --bg-cream: #fffaf3;
+            --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02);
+            --hover-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
+            --gradient-pink-beige: linear-gradient(135deg, #ffe6f0 0%, #fff0e0 100%);
+            --accent-gradient: linear-gradient(120deg, #e26d6d, #f3a683);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 250, 243, 0.96);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 18px 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(226, 109, 109, 0.1);
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: 0.2s;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-coral);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 27px;
+            height: 2.5px;
+            background: var(--text-dark);
+            transition: 0.2s;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(130deg, #fff7f0 0%, #ffeef4 100%);
+            padding-top: 100px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text .greeting {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--primary-coral);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .hero-text h1 {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #c35a5a, #e26d6d, #f3a683);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .hero-sub {
+            font-size: 20px;
+            font-weight: 500;
+            color: #6c5a5a;
+            margin-bottom: 20px;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            max-width: 90%;
+            margin-bottom: 32px;
+            font-size: 16px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.25s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 5px 12px rgba(226, 109, 109, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 22px rgba(226, 109, 109, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--primary-coral);
+            color: var(--primary-coral);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-coral);
+            color: white;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-circle {
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(145deg, #ffe0e8, #ffede1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 30px 35px -15px rgba(0, 0, 0, 0.2);
+            border: 5px solid rgba(255, 255, 255, 0.7);
+            overflow: hidden;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* section umum */
+        section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #2d2e32;
+        }
+
+        .section-underline {
+            width: 70px;
+            height: 4px;
+            background: var(--accent-gradient);
+            margin: 0 auto 55px auto;
+            border-radius: 4px;
+        }
+
+        /* about */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            font-size: 16px;
+            line-height: 1.65;
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .info-item i {
+            width: 42px;
+            height: 42px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            background: var(--bg-white);
+            padding: 25px 20px;
+            border-radius: 32px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .stat-card {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-number {
+            font-size: 38px;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* tabs experience */
+        .exp-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 45px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1.5px solid var(--primary-coral);
+            padding: 10px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: var(--primary-coral);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--accent-gradient);
+            color: white;
+            border-color: transparent;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fade 0.3s ease;
+        }
+
+        .tab-pane.active-pane {
+            display: block;
+        }
+
+        .timeline {
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-item {
+            background: var(--bg-white);
+            border-radius: 24px;
+            padding: 24px 30px;
+            margin-bottom: 28px;
+            box-shadow: var(--card-shadow);
+            transition: 0.2s;
+            border-left: 5px solid var(--primary-coral);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(8px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .timeline-date {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary-coral);
+            background: #ffeae9;
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 40px;
+            margin-bottom: 12px;
+        }
+
+        .timeline-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .timeline-sub {
+            font-weight: 500;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* education cards */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 35px;
+        }
+
+        .edu-card {
+            background: white;
+            border-radius: 32px;
+            padding: 32px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.25s;
+        }
+
+        .edu-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .edu-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-pink-beige);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        .edu-icon i {
+            font-size: 30px;
+            color: var(--primary-coral);
+        }
+
+        .edu-card h3 {
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+
+        .edu-meta {
+            font-weight: 500;
+            color: var(--primary-coral);
+            margin-bottom: 5px;
+        }
+
+        .achievements-list {
+            margin-top: 20px;
+            list-style: none;
+        }
+
+        .achievements-list li {
+            font-size: 14px;
+            padding: 6px 0;
+            display: flex;
+            gap: 10px;
+            align-items: baseline;
+        }
+
+        .achievements-list li i {
+            color: var(--primary-coral);
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        /* PROJECTS section (gambar dari PPT) */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: #f0e5de;
+            display: block;
+        }
+
+        .project-info {
+            padding: 24px;
+        }
+
+        .project-info h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 28px;
+            padding: 32px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .skill-card h3 {
+            font-size: 22px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            background: #f3ece8;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent-gradient);
+            color: white;
+        }
+
+        .soft-skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .progress-bar-bg {
+            background: #f0e3df;
+            border-radius: 30px;
+            height: 9px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 9px;
+            background: var(--accent-gradient);
+            border-radius: 30px;
+            width: 0%;
+        }
+
+        /* contact */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .contact-card-item {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            border-radius: 28px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-card-item i {
+            width: 52px;
+            height: 52px;
+            background: var(--gradient-pink-beige);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--primary-coral);
+        }
+
+        .form-container {
+            background: white;
+            padding: 36px;
+            border-radius: 32px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #f0dbd4;
+            border-radius: 28px;
+            font-family: inherit;
+            background: #fefaf8;
+            transition: 0.2s;
+        }
+
+        .input-group input:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-coral);
+        }
+
+        footer {
+            background: #2d2e32;
+            color: #ddd;
+            padding: 45px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-icons a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-left: 12px;
+            transition: 0.2s;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-coral);
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(5px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        @media (max-width: 1000px) {
+            .hero-grid, .about-grid, .contact-wrapper, .skills-container {
+                grid-template-columns: 1fr;
+            }
+            .hero-text h1 {
+                font-size: 42px;
+            }
+            .stats-row {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 30px;
+                gap: 25px;
+                transform: translateY(-150%);
+                transition: 0.3s;
+                box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .profile-circle {
+                width: 220px;
+                height: 220px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">MAF</div>
-            <ul class="nav-links">
-                <li><a href="#home">Beranda</a></li>
-                <li><a href="#about">Tentang</a></li>
-                <li><a href="#experience">Pengalaman</a></li>
-                <li><a href="#education">Pendidikan</a></li>
-                <li><a href="#skills">Keahlian</a></li>
-                <li><a href="#contact">Kontak</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+
+<nav class="navbar">
+    <div class="container nav-container">
+        <div class="logo">Merlita</div>
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#experience">Pengalaman</a></li>
+            <li><a href="#projects">Proyek</a></li>
+            <li><a href="#education">Pendidikan</a></li>
+            <li><a href="#skills">Keahlian</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="hero">
+    <div class="container hero-grid">
+        <div class="hero-text">
+            <div class="greeting">✨ Halo, I'm</div>
+            <h1>Merlita Afinna Fisarra</h1>
+            <div class="hero-sub">Mahasiswa Teknik Sipil | Antusias & Pekerja Keras</div>
+            <p class="hero-desc">Mahasiswa D4 Teknologi Rekayasa Konstruksi Bangunan Air ITS dengan semangat belajar hal baru, kolaboratif, dan berorientasi pada solusi.</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn btn-primary">Hubungi Saya</a>
+                <a href="#projects" class="btn btn-outline">Lihat Proyek</a>
             </div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <p class="greeting">Halo, Saya</p>
-                    <h1>Merlita Afinna Fisarra</h1>
-                    <p class="subtitle">Mahasiswa Teknik Sipil | Aktivis Kampus | Problem Solver</p>
-                    <p class="description">
-                        Mahasiswa Diploma Teknik Sipil di Institut Teknologi Sepuluh Nopember dengan semangat 
-                        belajar tinggi, mampu bekerja dalam tim, dan beradaptasi dengan baik.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">Hubungi Saya</a>
-                        <a href="#about" class="btn btn-secondary">Lebih Lanjut</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="profile-card">
-                      <img src="image/merlita.jpeg" alt="Profile" class="profile-img">
-                     </div>
-                </div>
+        <div class="hero-image">
+            <div class="profile-circle">
+                <!-- Foto profil dari PPT (gambar representatif dengan inisial MA) -->
+                <img src="image/merlita.jpeg" alt="Merlita Afinna Fisarra">
             </div>
         </div>
-        <div class="scroll-indicator">
-            <a href="#about"><i class="fas fa-chevron-down"></i></a>
-        </div>
-    </section>
+    </div>
+</section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>Tentang Saya</h2>
-                <div class="underline"></div>
+<!-- About -->
+<section id="about">
+    <div class="container">
+        <h2 class="section-title">Tentang Saya</h2>
+        <div class="section-underline"></div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>Saya adalah mahasiswa diploma Teknik Sipil dari Institut Teknologi Sepuluh Nopember. Memiliki rasa antusias yang tinggi terhadap hal baru, pekerja keras, komunikatif, dan mampu bekerja sama dalam tim dengan baik. Saya selalu tertantang untuk beradaptasi dan memberikan kontribusi nyata di setiap proyek maupun organisasi.</p>
+                <div class="info-list">
+                    <div class="info-item"><i class="fas fa-envelope"></i><span>2036221083@student.its.ac.id</span></div>
+                    <div class="info-item"><i class="fas fa-phone-alt"></i><span>+62 822-4564-1355</span></div>
+                    <div class="info-item"><i class="fas fa-map-pin"></i><span>Surabaya, Jawa Timur</span></div>
+                </div>
             </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        Saya adalah mahasiswa diploma Teknik Sipil dari Institut Teknologi Sepuluh Nopember. 
-                        Saya merupakan seorang yang memiliki rasa antusias yang tinggi dengan sesuatu hal yang baru, 
-                        memiliki sifat pekerja keras, dapat berkomunikasi dengan baik dalam tim dan dapat bekerjasama 
-                        dalam tim, suka dengan tantangan dan mampu beradaptasi dengan baik.
-                    </p>
-                    <div class="about-info">
-                        <div class="info-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>2036221083@student.its.ac.id</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+6282245641355</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Surabaya, Jawa Timur</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <h3>3.11</h3>
-                        <p>IPK</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>8+</h3>
-                        <p>Organisasi</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>5+</h3>
-                        <p>Proyek</p>
-                    </div>
-                </div>
+            <div class="stats-row">
+                <div class="stat-card"><div class="stat-number">3.11</div><div>IPK</div></div>
+                <div class="stat-card"><div class="stat-number">8+</div><div>Organisasi</div></div>
+                <div class="stat-card"><div class="stat-number">5+</div><div>Proyek</div></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <div class="section-header">
-                <h2>Pengalaman</h2>
-                <div class="underline"></div>
+<!-- Experience -->
+<section id="experience" style="background: #fef6f0;">
+    <div class="container">
+        <h2 class="section-title">Pengalaman</h2>
+        <div class="section-underline"></div>
+        <div class="exp-tabs">
+            <button class="tab-btn active" data-tab="work">Kerja & Magang</button>
+            <button class="tab-btn" data-tab="organization">Organisasi & Kepanitiaan</button>
+        </div>
+        <!-- Work pane -->
+        <div class="tab-pane active-pane" id="workPane">
+            <div class="timeline">
+                <div class="timeline-item"><div class="timeline-date">Mei 2023 - Juni 2023</div><div class="timeline-title">Volunteer Aksi Kemasyarakatan</div><div class="timeline-sub">Divisi Lingkungan Hidup · Fakultas Vokasi ITS</div><div class="timeline-desc">Fokus kegiatan sosial dan penanganan permasalahan lingkungan di masyarakat, koordinasi dengan warga dan pemetaan potensi.</div></div>
+                <div class="timeline-item"><div class="timeline-date">Februari - Maret 2026</div><div class="timeline-title">Demandailing Cafe</div><div class="timeline-sub">Barista (Part-time)</div><div class="timeline-desc">Melayani pelanggan, membuat kopi & non-kopi, menjaga kebersihan area bar, serta mengelola pesanan dengan efisiensi tinggi.</div></div>
+                <div class="timeline-item"><div class="timeline-date">Agustus 2023 - Januari 2024</div><div class="timeline-title">Magang · PT PP (Persero) Tbk</div><div class="timeline-sub">Quality Control & HSE support</div><div class="timeline-desc">Monitoring konstruksi, penyusunan work management, mengamati penerapan K3 dan standar mutu proyek.</div></div>
             </div>
-            
-            <div class="experience-tabs">
-                <button class="tab-btn active" data-tab="work">Kerja</button>
-                <button class="tab-btn" data-tab="org">Organisasi</button>
+        </div>
+        <!-- Organization pane -->
+        <div class="tab-pane" id="orgPane">
+            <div class="timeline">
+                <div class="timeline-item"><div class="timeline-date">Agustus 2024 - Nov 2024</div><div class="timeline-title">PKTI-TD 2024</div><div class="timeline-sub">Staff Ahli Media Kreatif</div><div class="timeline-desc">Membuat konten sosial media, berkoordinasi dengan BEM Fakultas Vokasi, desain grafis untuk promosi.</div></div>
+                <div class="timeline-item"><div class="timeline-date">Mei 2024 - Jan 2025</div><div class="timeline-title">Himpunan Mahasiswa Diploma Sipil</div><div class="timeline-sub">Staff Restech Department</div><div class="timeline-desc">Menjalankan PKTI-TD, PKM on Manyar, mendampingi MAWAPRES, PIC program kerja.</div></div>
+                <div class="timeline-item"><div class="timeline-date">Maret 2024 - Nov 2024</div><div class="timeline-title">D'village 13th Edition</div><div class="timeline-sub">Ketua Subdivisi Kestari D'Fair</div><div class="timeline-desc">Koordinasi tim, pembagian jobdesk, monitoring keberlanjutan acara.</div></div>
+                <div class="timeline-item"><div class="timeline-date">Sep 2023 - Jan 2024</div><div class="timeline-title">Campus Expo</div><div class="timeline-sub">Staff Ahli Divisi Acara</div><div class="timeline-desc">Menyusun rundown dan teknis acara di lapangan.</div></div>
+                <div class="timeline-item"><div class="timeline-date">Juli 2023 - Agt 2023</div><div class="timeline-title">OKKBK HMDS ITS 2023</div><div class="timeline-sub">Divisi Perlengkapan</div><div class="timeline-desc">Keteknisian acara, penyiapan perlengkapan setiap divisi.</div></div>
+                <div class="timeline-item"><div class="timeline-date">Jun 2023 - Nov 2023</div><div class="timeline-title">D'village 12th Edition</div><div class="timeline-sub">Staff Subdivisi Kestari D'Fest</div><div class="timeline-desc">Rekap data, administrasi, dan pengolahan data peserta.</div></div>
+                <div class="timeline-item"><div class="timeline-date">Mei 2023 - Jun 2023</div><div class="timeline-title">Webinar Pasca Kampus</div><div class="timeline-sub">Staff Divisi Acara</div><div class="timeline-desc">Menyusun rangkaian acara, Juklak, Juknis, TOR, dan games.</div></div>
+                <div class="timeline-item"><div class="timeline-date">Nov 2022 - Jan 2023</div><div class="timeline-title">Campus Expo</div><div class="timeline-sub">Divisi Acara</div><div class="timeline-desc">Menyiapkan rundown, TOR, pertanyaan untuk pemateri.</div></div>
             </div>
+        </div>
+    </div>
+</section>
 
-            <div class="tab-content active" id="work">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="date">Mei 2023 - Juni 2023</span>
-                            <h3>Volunteer Aksi Kemasyarakatan</h3>
-                            <p class="position">Divisi Lingkungan Hidup</p>
-                            <p class="description">
-                                Departemen Aksi Kemasyarakatan berfokus dalam kegiatan sosial masyarakat dan 
-                                kepedulian sosial mahasiswa Fakultas Vokasi ITS. Divisi Lingkungan Hidup berperan 
-                                dalam penanganan permasalahan lingkungan di masyarakat.
-                            </p>
-                        </div>
-                    </div>
+<!-- PROJECTS SECTION (Gambar dari PPT: Rekayasa Sungai, Breakwater, Long Cross) -->
+<section id="projects" style="background: white;">
+    <div class="container">
+        <h2 class="section-title">Proyek Teknik</h2>
+        <div class="section-underline"></div>
+        <div class="projects-grid">
+            <!-- Proyek 1: Tubes Rekayasa Sungai -->
+            <div class="project-card">
+                <img class="project-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23cfe2e8'/%3E%3Cpath d='M0 120 L400 100 L400 180 L0 200 Z' fill='%236b9e9e'/%3E%3Cpath d='M50 140 L120 110 L200 125 L300 105 L380 130' stroke='%232c5a5a' stroke-width='3' fill='none'/%3E%3Ccircle cx='150' cy='135' r='15' fill='%233a7a7a'/%3E%3Ctext x='200' y='50' font-size='16' fill='%23355' text-anchor='middle' font-weight='bold'%3EDAS &amp; Tutupan Lahan%3C/text%3E%3C/svg%3E" alt="DAS dan Tutupan Lahan">
+                <div class="project-info">
+                    <h3>🌊 Rekayasa Sungai</h3>
+                    <p>Pembuatan DAS dan Tutupan Lahan pada lokasi studi kasus. Analisis hidrologi menggunakan ArcGIS & HEC-RAS untuk pemetaan daerah aliran sungai.</p>
                 </div>
             </div>
-
-            <div class="tab-content" id="org">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="date">Agustus 2024 - November 2024</span>
-                            <h3>PKTI-TD 2024</h3>
-                            <p class="position">Staff Ahli Media Kreatif</p>
-                            <p class="description">
-                                Menuangkan ide konten untuk postingan sosial media, menjadi stakeholder dengan 
-                                pihak BEM Fakultas Vokasi ITS, dan membuat ide design untuk postingan sosial media.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="date">Mei 2024 - Januari 2025</span>
-                            <h3>Himpunan Mahasiswa Diploma Sipil</h3>
-                            <p class="position">Staff of Restech Department</p>
-                            <p class="description">
-                                Menjalankan Program Kerja PKTI-TD, PKM on Manyar, mengawal MAWAPRES, 
-                                dan menjadi PIC dalam Program Kerja PKTI-TD.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="date">Maret 2024 - November 2024</span>
-                            <h3>D'village 13th Edition</h3>
-                            <p class="position">Ketua Subdivisi Kestari D'Fair</p>
-                            <p class="description">
-                                Melakukan koordinasi bersama staff subdivisi kestari, bertanggung jawab dalam 
-                                pembagian jobdesk, dan memberikan arahan staff.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="date">September 2023 - Januari 2024</span>
-                            <h3>Campus Expo</h3>
-                            <p class="position">Staff Ahli Divisi Acara</p>
-                            <p class="description">
-                                Bertanggung jawab dalam menyusun rundown dan menyusun teknisan acara di lapangan.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="date">Juli 2023 - Agustus 2023</span>
-                            <h3>OKKBK HMDS ITS 2023</h3>
-                            <p class="position">Divisi Perlengkapan</p>
-                            <p class="description">
-                                Bertanggung jawab dalam keteknisan selama acara berlangsung, menyiapkan semua 
-                                perlengkapan yang diperlukan setiap divisi.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="date">Juni 2023 - November 2023</span>
-                            <h3>D'village 12th Edition</h3>
-                            <p class="position">Staff Subdivisi Kestari D'Fest</p>
-                            <p class="description">
-                                Merekap data dan mengolah data-data, membuat dan mengurus segala administrasi.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="date">Mei 2023 - Juni 2023</span>
-                            <h3>Webinar Pasca Kampus</h3>
-                            <p class="position">Staff Divisi Acara</p>
-                            <p class="description">
-                                Menyusun rangkaian acara atau rundown, menyiapkan dan membuat Juklak, Juknis, 
-                                dan TOR, menyiapkan Games atau Quiz.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <span class="date">November 2022 - Januari 2023</span>
-                            <h3>Campus Expo</h3>
-                            <p class="position">Staff Divisi Acara</p>
-                            <p class="description">
-                                Menyiapkan dan menyusun rundown, membuat TOR, menyiapkan pertanyaan untuk pemateri.
-                            </p>
-                        </div>
-                    </div>
+            <!-- Proyek 2: Tubes Proyek Terintegrasi (Long Cross Sungai & Site Plan) -->
+            <div class="project-card">
+                <img class="project-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23f1e2cf'/%3E%3Cpath d='M30 160 L200 80 L370 150' stroke='%23825e3e' stroke-width='4' fill='none'/%3E%3Crect x='80' y='120' width='70' height='50' fill='%23b0a07c'/%3E%3Crect x='260' y='100' width='80' height='60' fill='%239d8468'/%3E%3Ctext x='200' y='45' font-size='14' fill='%23633f1f' text-anchor='middle' font-weight='bold'%3ELong Cross Sungai &amp; Site Plan%3C/text%3E%3C/svg%3E" alt="Long Cross Sungai dan Site Plan">
+                <div class="project-info">
+                    <h3>📐 Proyek Terintegrasi</h3>
+                    <p>Pembuatan Long Cross Sungai dan Site Plan Rencana pada lokasi studi. Perencanaan tata ruang dan elevasi muka air menggunakan AutoCAD & Civil 3D.</p>
+                </div>
+            </div>
+            <!-- Proyek 3: Tubes Rekayasa Bangunan Pantai (Breakwater) -->
+            <div class="project-card">
+                <img class="project-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 240'%3E%3Crect width='400' height='240' fill='%23b3d9ff'/%3E%3Cpath d='M0 170 L400 170 L400 240 L0 240 Z' fill='%23f4cda5'/%3E%3Crect x='50' y='100' width='60' height='70' fill='%237c6b50'/%3E%3Crect x='180' y='80' width='70' height='90' fill='%236e5d44'/%3E%3Crect x='310' y='110' width='55' height='60' fill='%237c6b50'/%3E%3Ctext x='200' y='45' font-size='15' fill='%2300487a' text-anchor='middle' font-weight='bold'%3EDesain Breakwater Penanggulangan Abrasi%3C/text%3E%3C/svg%3E" alt="Breakwater Penanggulangan Abrasi">
+                <div class="project-info">
+                    <h3>🏝️ Rekayasa Bangunan Pantai</h3>
+                    <p>Desain Breakwater untuk menanggulangi permasalahan abrasi di pantai lokasi studi. Analisis gelombang dan stabilitas struktur menggunakan data angin & bathymetri.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <div class="container">
-            <div class="section-header">
-                <h2>Riwayat Pendidikan</h2>
-                <div class="underline"></div>
+<!-- Education -->
+<section id="education">
+    <div class="container">
+        <h2 class="section-title">Riwayat Pendidikan</h2>
+        <div class="section-underline"></div>
+        <div class="edu-grid">
+            <div class="edu-card">
+                <div class="edu-icon"><i class="fas fa-water"></i></div>
+                <h3>Institut Teknologi Sepuluh Nopember</h3>
+                <div class="edu-meta">D4 Teknologi Rekayasa Konstruksi Bangunan Air</div>
+                <div>Agustus 2022 - Sekarang | IPK 3.11/4.00</div>
+                <ul class="achievements-list">
+                    <li><i class="fas fa-check-circle"></i> Survei HPS Rehabilitasi Jaringan Irigasi Dinas PU SDA Jatim</li>
+                    <li><i class="fas fa-check-circle"></i> Semifinalis Futurest Business Case Competition 2023 (SRE ITS)</li>
+                    <li><i class="fas fa-check-circle"></i> Pengisi acara D'village 11th & Dies Natalis ke-62</li>
+                </ul>
             </div>
-            <div class="education-grid">
-                <div class="education-card">
-                    <div class="edu-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <h3>Institut Teknologi Sepuluh Nopember</h3>
-                    <p class="edu-degree">Diploma Teknik Sipil</p>
-                    <p class="edu-year">Agustus 2022 - Sekarang</p>
-                    <p class="edu-gpa">IPK: 3.11/4.00</p>
-                    <ul class="edu-achievements">
-                        <li>Survei Harga Perkiraan Sendiri (HPS) Kegiatan Rehabilitasi Jaringan Irigasi</li>
-                        <li>Semifinalis Futurest Business Case Competition 2023 - SRE ITS</li>
-                        <li>Pengisi acara D'village 11th Edition</li>
-                        <li>Pengisi acara Dies Natalis ke-62</li>
-                    </ul>
-                </div>
-                <div class="education-card">
-                    <div class="edu-icon">
-                        <i class="fas fa-school"></i>
-                    </div>
-                    <h3>MAN Kota Surabaya</h3>
-                    <p class="edu-degree">Sekolah Menengah Atas</p>
-                    <p class="edu-year">Juli 2019 - Mei 2022</p>
-                    <ul class="edu-achievements">
-                        <li>Peserta "Global Youth Exchange" - Pertukaran remaja Indonesia</li>
-                    </ul>
-                </div>
+            <div class="edu-card">
+                <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3>MAN Kota Surabaya</h3>
+                <div class="edu-meta">MIPA | 2019 - 2022</div>
+                <ul class="achievements-list">
+                    <li><i class="fas fa-globe"></i> Peserta "Global Youth Exchange" - Pertukaran remaja Indonesia</li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2>Keahlian</h2>
-                <div class="underline"></div>
+<!-- Skills -->
+<section id="skills" style="background: #fefaf5;">
+    <div class="container">
+        <h2 class="section-title">Keahlian</h2>
+        <div class="section-underline"></div>
+        <div class="skills-container">
+            <div class="skill-card">
+                <h3><i class="fas fa-laptop-code"></i> Hard Skills</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Microsoft Word</span><span class="skill-tag">PowerPoint</span><span class="skill-tag">Excel</span>
+                    <span class="skill-tag">Canva</span><span class="skill-tag">ArcGIS</span><span class="skill-tag">HEC-RAS</span>
+                    <span class="skill-tag">AutoCAD</span><span class="skill-tag">3Ds Max</span><span class="skill-tag">Lumion</span>
+                    <span class="skill-tag">EPANET</span><span class="skill-tag">Ocean Data View</span><span class="skill-tag">WR PLOT</span>
+                    <span class="skill-tag">Revit</span>
+                </div>
             </div>
-            
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3><i class="fas fa-laptop-code"></i> Hard Skills</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Microsoft Word</span>
-                        <span class="skill-tag">Microsoft PowerPoint</span>
-                        <span class="skill-tag">Microsoft Excel</span>
-                        <span class="skill-tag">Canva</span>
-                        <span class="skill-tag">ArcGIS</span>
-                        <span class="skill-tag">HEC-RAS</span>
-                        <span class="skill-tag">AutoCAD</span>
-                        <span class="skill-tag">3Ds Max</span>
-                        <span class="skill-tag">Lumion</span>
-                        <span class="skill-tag">EPANET</span>
-                        <span class="skill-tag">Ocean Data View</span>
-                        <span class="skill-tag">WR PLOT</span>
-                        <span class="skill-tag">Revit</span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-users"></i> Soft Skills</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Kerja Sama Tim</span>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Komunikasi</span>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Kolaborasi</span>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Inovasi</span>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Adaptasi</span>
-                            <div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div>
-                        </div>
-                    </div>
-                </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-users"></i> Soft Skills</h3>
+                <div class="soft-skill-item"><div class="skill-label"><span>Kerja Sama Tim</span><span>95%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:95%"></div></div></div>
+                <div class="soft-skill-item"><div class="skill-label"><span>Komunikasi</span><span>90%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:90%"></div></div></div>
+                <div class="soft-skill-item"><div class="skill-label"><span>Kolaborasi</span><span>90%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:90%"></div></div></div>
+                <div class="soft-skill-item"><div class="skill-label"><span>Inovasi</span><span>85%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:85%"></div></div></div>
+                <div class="soft-skill-item"><div class="skill-label"><span>Adaptasi</span><span>95%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:95%"></div></div></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Hubungi Saya</h2>
-                <div class="underline"></div>
+<!-- Contact -->
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Hubungi Saya</h2>
+        <div class="section-underline"></div>
+        <div class="contact-wrapper">
+            <div class="contact-details">
+                <div class="contact-card-item"><i class="fas fa-phone-alt"></i><div><h4>Telepon</h4><p>+62 822-4564-1355</p></div></div>
+                <div class="contact-card-item"><i class="fas fa-envelope"></i><div><h4>Email</h4><p>2036221083@student.its.ac.id</p></div></div>
+                <div class="contact-card-item"><i class="fas fa-map-marker-alt"></i><div><h4>Alamat</h4><p>Jl. Bratang Binangun 4/39, Surabaya, Jawa Timur</p></div></div>
             </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Telepon</h4>
-                            <p>+6282245641355</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>2036221083@student.its.ac.id</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Alamat</h4>
-                            <p>Jl. Bratang Binangun 4/39<br>Surabaya, Jawa Timur</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Nama" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Pesan" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Kirim Pesan</button>
-                    </form>
-                </div>
+            <div class="form-container">
+                <form id="contactForm">
+                    <div class="input-group"><input type="text" placeholder="Nama Lengkap" required></div>
+                    <div class="input-group"><input type="email" placeholder="Email" required></div>
+                    <div class="input-group"><textarea rows="4" placeholder="Tulis pesan Anda..." required></textarea></div>
+                    <button type="submit" class="btn btn-primary" style="width:100%">Kirim Pesan</button>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>Merlita Afinna Fisarra</h3>
-                    <p>Mahasiswa Teknik Sipil ITS</p>
-                </div>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Merlita Afinna Fisarra. All Rights Reserved.</p>
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <div><h3 style="color:white">Merlita Afinna Fisarra</h3><p style="opacity:0.7">Mahasiswa Teknik Sipil ITS</p></div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
-    </footer>
+        <div style="text-align:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:25px; font-size:13px;">&copy; 2025 Merlita Afinna Fisarra. All rights reserved.</div>
+    </div>
+</footer>
 
-    <script>
-        // Mobile Navigation
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
+<script>
+    // mobile menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger?.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
         });
-
-        // Tab Navigation
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                
-                btn.classList.add('active');
-                document.getElementById(btn.dataset.tab).classList.add('active');
-            });
-        });
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
+    });
+    // navbar scroll
+    window.addEventListener('scroll', () => {
+        document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+    // tab experience
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const workPane = document.getElementById('workPane');
+    const orgPane = document.getElementById('orgPane');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            if(btn.dataset.tab === 'work') {
+                workPane.classList.add('active-pane');
+                orgPane.classList.remove('active-pane');
             } else {
-                navbar.classList.remove('scrolled');
+                orgPane.classList.add('active-pane');
+                workPane.classList.remove('active-pane');
             }
         });
-
-        // Form Submit
-        document.querySelector('form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Terima kasih! Pesan Anda telah terkirim.');
-            e.target.reset();
+    });
+    // contact form alert
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Terima kasih! Pesan Anda telah terkirim.');
+        form.reset();
+    });
+    // smooth scroll all hash
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
         });
-    </script>
+    });
+</script>
 </body>
 </html>
